@@ -33,14 +33,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   TextEditingController messageController = TextEditingController();
 
-  _MyHomePageState() {
-    this.loadRecentMessage();
-  }
+  _MyHomePageState() {}
 
-  void loadRecentMessage() async {
-    noteList = await loadNote();
-    setState(() {});
-  }
+  void loadRecentMessage() async {}
 
   @override
   Widget build(BuildContext context) {
@@ -90,48 +85,15 @@ class _MyHomePageState extends State<MyHomePage> {
         ));
   }
 
-  void saveNewNote(String text) async {
-    var db = await createConnection();
-    var sql = "INSERT INTO Note (text) VALUES (?)";
-    var res = await db.rawInsert(sql, [text]);
-
-    noteList = await loadNote();
-    setState(() {
-      messageController.text = "";
-    });
-  }
+  void saveNewNote(String text) async {}
 
   Future<List<String>> loadNote() async {
-    final db = await createConnection();
-    var res = await db.query("Note");
-
     List<String> resultList;
-
-    if (res.isNotEmpty) {
-      resultList = res.map((row) {
-        var result = row['text'].toString();
-        return result;
-      }).toList();
-    } else {
-      resultList = [];
-    }
 
     return resultList;
   }
 
   Future<Database> createConnection() async {
-    Directory documentsDirectory = await getApplicationDocumentsDirectory();
-    String path = join(documentsDirectory.path, "Nextflow.db");
-    return await openDatabase(
-      path,
-      version: 1,
-      onOpen: (db) {},
-      onCreate: (Database db, int version) async {
-        await db.execute("CREATE TABLE Note ("
-            "id INTEGER PRIMARY KEY AUTOINCREMENT,"
-            "text TEXT"
-            ")");
-      },
-    );
+    return null;
   }
 }
