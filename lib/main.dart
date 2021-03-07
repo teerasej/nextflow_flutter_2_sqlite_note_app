@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: TextFormField(
                       controller: messageController,
                     )),
-                    FlatButton(
+                    TextButton(
                       onPressed: () {
                         var message = messageController.text;
 
