@@ -1,4 +1,4 @@
-package com.example.nextflow_flutter_2_sqlite_note_app
+package com.example.nextflow_flutter_3_sqlite_note_app
 
 import io.flutter.embedding.android.FlutterActivity
 
