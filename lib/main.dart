@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, this.title = ''}) : super(key: key);
 
   final String title;
 
@@ -88,12 +88,13 @@ class _MyHomePageState extends State<MyHomePage> {
   void saveNewNote(String text) async {}
 
   Future<List<String>> loadNote() async {
-    List<String> resultList;
+    List<String> resultList = [];
 
     return resultList;
   }
 
-  Future<Database> createConnection() async {
+  // Edit to non-nullable database Future<Database>
+  Future<Database?> createConnection() async {
     return null;
   }
 }
